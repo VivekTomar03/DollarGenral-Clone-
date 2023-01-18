@@ -9,7 +9,7 @@ import Register from '../Pages/Register'
 
 const AllRoutes = () => {
   return (
-    <div>
+    <div> 
       <Routes>
         <Route path="/" element={<HomePage/>}></Route>
         <Route path='login' element={<Login/>}></Route>
