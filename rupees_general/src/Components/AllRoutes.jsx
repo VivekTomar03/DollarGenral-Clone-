@@ -6,6 +6,7 @@ import Login from '../Pages/Login'
 import ProductPage from '../Pages/ProductPage'
 import Product_Info from '../Pages/Product_Info'
 import Register from '../Pages/Register'
+import Updatedata from './Updatedata'
 
 const AllRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AllRoutes = () => {
         <Route path='product' element={<ProductPage/>}></Route>
         <Route path='product_info/:prod_id' element={<Product_Info/>}></Route>
         <Route path='adminpage' element={<AdminPage/>}></Route>
+        <Route path='updatedata' element={<Updatedata/>}></Route>
       </Routes>
     </div>
   )

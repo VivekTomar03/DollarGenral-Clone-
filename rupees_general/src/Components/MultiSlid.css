@@ -1,0 +1,14 @@
+
+.slick-slide {
+
+
+text-align: start;
+}
+.slick-slide  img{
+    margin-left: 20px;
+}
+.slick-slide  button{
+    background-color: black;
+    color: white;
+    padding: 5px;
+}

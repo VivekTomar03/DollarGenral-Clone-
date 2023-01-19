@@ -31,3 +31,20 @@ export const deletedata = (id)=>{
     url:`https://mock-server-json-x067.onrender.com/Vitamins/${id}`
    })
 }
+
+export const updatedata = (id,obj)=>{
+    const{name,price,description,rating,Brand_Description,Unit_Size,image} =obj
+    return axios({
+        method:"patch",
+        url:`https://mock-server-json-x067.onrender.com/Vitamins/${id}`,
+        data:{
+            name,
+            price,
+            description,
+            rating,
+            Brand_Description,
+            Unit_Size,
+            image
+        }
+    })
+}

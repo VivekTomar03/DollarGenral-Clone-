@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, Button, Heading, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure } from '@chakra-ui/react'
+import {  Button, Card, CardBody, Heading, Image, Input,  Text, } from '@chakra-ui/react'
 import React, { useReducer, useState } from 'react'
 import {
   FormControl,
@@ -6,7 +6,9 @@ import {
   
 } from '@chakra-ui/react'
 import { deletedata, getdata, postdata } from '../Api'
-import { useEffect } from 'react'
+
+import Updatedata from '../Components/Updatedata'
+
 
 
  const initstate = {
@@ -75,6 +77,8 @@ import { useEffect } from 'react'
 const AdminPage = () => {
 const [getproduct , setgetproduct] = useState([])
 const [state, dispatch] = useReducer(reducer, initstate);
+  const [updatedatas  , setupdatedata] = useState(false)
+  const [iddata , setiddata] = useState(0)
   //  -----------------------------------fetch data-------------------------------------------------------//
          const fetchdata = ()=>{
             getdata().then((res)=>{
@@ -101,7 +105,8 @@ const [state, dispatch] = useReducer(reducer, initstate);
  //-------------------------------------------delete data-----------------------------------------------//
 
  const handledelete = (id)=>{
-     deletedata(id)
+     deletedata(id).then(()=> fetchdata())
+    
        
  }
  //-------------------------------------------------------edit data ------------------------------------------------//
@@ -109,18 +114,22 @@ const [state, dispatch] = useReducer(reducer, initstate);
 
  
  const handleedit =(id)=>{
-
-  
+    <>
+      {setiddata(id)}
+     { setupdatedata(true)}
+      
+ 
+    </>
  }
 
-
-
-  return (
+// console.log(iddata)
+  return updatedatas ? <Updatedata data={iddata} setupdatedata={setupdatedata} fetchdata={fetchdata}  /> :  (
     <div >
         <Heading marginTop="10px" fontSize='4xl'>Admin's Portal</Heading>
-        <div style={{display:"flex" , justifyContent:"space-around"}}  >
-          <div style={{border:"1px solid grey" , padding:"10px"}}>
-            <form onSubmit={handlesubmit}>
+        <div style={{display:"flex" , justifyContent:"space-around",marginTop:"50px" }} >
+          <Card >
+            <CardBody>
+            <form onSubmit={handlesubmit} style={{border:"1px solid grey" , padding:"10px"}}>
             <FormControl w="330px" >
           <Text fontSize='4xl' marginTop="40px" >Add Product</Text>
               <FormLabel>Product name</FormLabel>
@@ -170,8 +179,8 @@ const [state, dispatch] = useReducer(reducer, initstate);
               <Input type="submit" value="Add Product" bg="black" color="white"/>
            </FormControl>
             </form>
-
-          </div>
+            </CardBody>
+          </Card>
          <div >
                 <Text fontSize='4xl'>Display Data</Text>
                 <Button onClick={fetchdata}>Get Data</Button>
@@ -179,7 +188,8 @@ const [state, dispatch] = useReducer(reducer, initstate);
               <div style={{display:"flex" , flexDirection:"column" ,justifyContent:"center"}}>
               {
                   getproduct.map((item)=>{
-                    return<div key={item.id} style={{border:"1px solid black" , margin:"5px"}}>
+                    return<Card key={item.id} style={{border:"1px solid black" , margin:"5px"}} padding={10}>
+                      <CardBody padding={50} style={{border:"1px solid black" , margin:"5px"}}>
                     <Image src={item.image} w="200px" marginLeft={250}/>
                       <Text>Title :{item.name}</Text>
                       <Text>Price :{item.price}</Text>
@@ -187,11 +197,11 @@ const [state, dispatch] = useReducer(reducer, initstate);
                       <Text>Rating :{item.rating}</Text>
                       <Text>Brand :{item.Brand_Description}</Text>
                       <Text>Unit Size :{item.Unit_Size}</Text>
-                      <Button onClick={()=>handleedit(item.id)}>Edit</Button>
+                      <Button onClick={()=>handleedit(item)}>Edit</Button>
                       <Button onClick={()=> handledelete(item.id)}>Delete</Button>
                       
-                      
-                    </div>
+                      </CardBody>
+                    </Card>
                   })
                 }
               </div>

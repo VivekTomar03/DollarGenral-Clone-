@@ -26,6 +26,7 @@ const Links = [
 
 
 
+
 export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -41,7 +42,9 @@ export default function Simple() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box>Logo</Box>
+            <Box>
+              <a href="/"> <img width={200} src="https://www.dollargeneral.com/content/dam/dollargeneral/DollareGeneral_Logo.png" alt="log" srcset="" /></a>
+            </Box>
             <HStack
               as={'nav'}
               spacing={4}
