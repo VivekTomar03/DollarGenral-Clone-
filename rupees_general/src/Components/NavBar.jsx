@@ -16,6 +16,7 @@ import {
   useColorModeValue,
   Stack,
   Text,
+  Input,
   
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
@@ -70,8 +71,10 @@ export default function Simple() {
 
             </HStack>
           </HStack>
-          <Flex alignItems={'center'}>
-            <Menu>
+
+          <Flex alignItems={'center'} >
+            <Input type="text" backgroundColor={"white"} marginRight="20px" height={10} placeholder="Search for a product       🔍" color={"black"}/>
+            <Menu marginRight="20px">
               <MenuButton
                 as={Button}
                 rounded={'full'}
@@ -84,7 +87,7 @@ export default function Simple() {
                     'https://as1.ftcdn.net/v2/jpg/03/16/12/52/1000_F_316125289_3GTL3Yd9JVQz3Nw50uAEEkOpX6GvK0LE.jpg'
                   }
                 />
-                <Text>Sign In</Text>
+                <Text marginRight="20px">Sign In</Text>
               </MenuButton>
               <MenuList color={'black'}>
                 <MenuItem><NavLink to="./login">SignIn</NavLink></MenuItem>

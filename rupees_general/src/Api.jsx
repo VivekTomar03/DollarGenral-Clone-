@@ -48,3 +48,22 @@ export const updatedata = (id,obj)=>{
         }
     })
 }
+
+export const getdatavitamins = (searchdata)=>{
+   
+    return axios({
+        method:"get",
+        url:`https://mock-server-json-x067.onrender.com/Vitamins`,
+        params:{
+            q:searchdata,
+            _limit:1
+
+        }
+    })
+}
+export const getdataforproddetails = (id)=>{
+    return axios({
+        method:"get",
+        url:`https://mock-server-json-x067.onrender.com/Vitamins/${id}`
+    })
+}

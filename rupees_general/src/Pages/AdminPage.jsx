@@ -1,4 +1,4 @@
-import {  Button, Card, CardBody, Heading, Image, Input,  Text, } from '@chakra-ui/react'
+import {  Button, Card, CardBody, Grid, Heading, Image, Input,  Text, } from '@chakra-ui/react'
 import React, { useReducer, useState } from 'react'
 import {
   FormControl,
@@ -124,12 +124,12 @@ const [state, dispatch] = useReducer(reducer, initstate);
 
 // console.log(iddata)
   return updatedatas ? <Updatedata data={iddata} setupdatedata={setupdatedata} fetchdata={fetchdata}  /> :  (
-    <div >
-        <Heading marginTop="10px" fontSize='4xl'>Admin's Portal</Heading>
-        <div style={{display:"flex" , justifyContent:"space-around",marginTop:"50px" }} >
-          <Card >
-            <CardBody>
-            <form onSubmit={handlesubmit} style={{border:"1px solid grey" , padding:"10px"}}>
+    <div>
+        <Heading marginTop="10px" fontSize='6xl'>Admin's Portal</Heading>
+        <div  style={{display:"flex" , justifyContent:"space-around",marginTop:"50px", flexDirection:"column" ,alignItems:"center"}} >
+          <Card  boxShadow={"rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;"}>
+            <CardBody bg={"yellow"}>
+            <form onSubmit={handlesubmit} style={{border:"3px solid black" , padding:"10px" , backgroundColor:"white"} } >
             <FormControl w="330px" >
           <Text fontSize='4xl' marginTop="40px" >Add Product</Text>
               <FormLabel>Product name</FormLabel>
@@ -182,23 +182,26 @@ const [state, dispatch] = useReducer(reducer, initstate);
             </CardBody>
           </Card>
          <div >
+         <br/>
+           <hr/>
+           <br/>
                 <Text fontSize='4xl'>Display Data</Text>
                 <Button onClick={fetchdata}>Get Data</Button>
               
-              <div style={{display:"flex" , flexDirection:"column" ,justifyContent:"center"}}>
+              <div style={{display:"grid" , gridTemplateColumns:"repeat(3,1fr)" ,justifyContent:"center"}}>
               {
                   getproduct.map((item)=>{
-                    return<Card key={item.id} style={{border:"1px solid black" , margin:"5px"}} padding={10}>
-                      <CardBody padding={50} style={{border:"1px solid black" , margin:"5px"}}>
-                    <Image src={item.image} w="200px" marginLeft={250}/>
+                    return<Card key={item.id} style={{ margin:"5px"}} padding={10}>
+                      <CardBody padding={50} style={{  margin:"5px"}} boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}>
+                    <Image src={item.image} w="200px" marginLeft={50}/>
                       <Text>Title :{item.name}</Text>
                       <Text>Price :{item.price}</Text>
                       <Text>Description :{item.description}</Text>
                       <Text>Rating :{item.rating}</Text>
                       <Text>Brand :{item.Brand_Description}</Text>
                       <Text>Unit Size :{item.Unit_Size}</Text>
-                      <Button onClick={()=>handleedit(item)}>Edit</Button>
-                      <Button onClick={()=> handledelete(item.id)}>Delete</Button>
+                      <Button onClick={()=>handleedit(item)} marginRight="4px" bg={"yellow"}>Edit    .</Button>
+                      <Button onClick={()=> handledelete(item.id)} bg={"yellow"}>Delete</Button>
                       
                       </CardBody>
                     </Card>

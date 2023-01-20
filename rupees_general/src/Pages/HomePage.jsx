@@ -1,10 +1,11 @@
 import React from 'react'
-import {Box, Flex, Grid, Heading,  Image, Text, } from '@chakra-ui/react'
+import {Box, Flex, Grid, Heading,  Image, Menu, MenuList, Text, } from '@chakra-ui/react'
 import SimpleSlider from '../Components/Crousel'
 import { Card,  CardBody,  } from '@chakra-ui/react'
 import Category from '../Components/Category'
 import MultipleItems from '../Components/FeatureCoupoun'
 import Footer from '../Components/Footer'
+import CartDiv from '../Components/CartDiv'
 
 
 const HomePage = () => {
@@ -13,20 +14,9 @@ const HomePage = () => {
 
   return (
     <div>
-      <Flex className='cartDiv' alignItems={"center"} justifyContent="space-between">
-        <Box>
-          <Text>My Store</Text>
-          <Text>214 Gallatin Pike N Street 402 </Text>
-        </Box>
-          <Flex alignItems={"center"}>
-            <Image src='https://thumbs.dreamstime.com/b/trolley-thin-line-add-to-shopping-cart-icon-vector-illustration-graphic-web-design-template-black-color-editable-symbol-171152878.jpg'
-             width={70}
-             alt='cartimg'
-             
-            />
-            <Heading bg={"grey"} borderRadius="50%">1</Heading>
-          </Flex>
-      </Flex>
+       <div>
+        <CartDiv/>
+       </div>
 
         <div className='crousel' style={{alignItems:"center" , marginLeft:"10%", marginTop:"50px"}}>
               <SimpleSlider/>

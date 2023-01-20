@@ -4,6 +4,7 @@ import AdminPage from '../Pages/AdminPage'
 import HomePage from '../Pages/HomePage'
 import Login from '../Pages/Login'
 import ProductPage from '../Pages/ProductPage'
+import ProductVitamins from '../Pages/ProductVitamins'
 import Product_Info from '../Pages/Product_Info'
 import Register from '../Pages/Register'
 import Updatedata from './Updatedata'
@@ -19,6 +20,7 @@ const AllRoutes = () => {
         <Route path='product_info/:prod_id' element={<Product_Info/>}></Route>
         <Route path='adminpage' element={<AdminPage/>}></Route>
         <Route path='updatedata' element={<Updatedata/>}></Route>
+        <Route path="productvitamins" element={<ProductVitamins/>}></Route>
       </Routes>
     </div>
   )
