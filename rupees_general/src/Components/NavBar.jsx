@@ -21,6 +21,7 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { NavLink } from "react-router-dom";
+import DarkMode from './DarkMode';
 const Links = [
   {to:"/" , title:"Home"}
 ];
@@ -28,7 +29,8 @@ const Links = [
 
 
 
-export default function Simple() {
+export default function   NavBar({username}) {
+  console.log(username)
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -87,14 +89,14 @@ export default function Simple() {
                     'https://as1.ftcdn.net/v2/jpg/03/16/12/52/1000_F_316125289_3GTL3Yd9JVQz3Nw50uAEEkOpX6GvK0LE.jpg'
                   }
                 />
-                <Text marginRight="20px">Sign In</Text>
+                <Text marginRight="20px" >Sign In {username}</Text>
               </MenuButton>
               <MenuList color={'black'}>
                 <MenuItem><NavLink to="./login">SignIn</NavLink></MenuItem>
                 <MenuItem><NavLink to="./register">Create Account</NavLink></MenuItem>
                 <MenuItem>Wallet</MenuItem>
                 <MenuItem>Shopping List</MenuItem>
-                <MenuItem>Gift Card Balnce</MenuItem>
+                <MenuItem>Dark/Light Mode <DarkMode/></MenuItem>
                 <MenuItem>Get Help</MenuItem>
                 <MenuDivider />
                 <MenuItem><NavLink to="adminpage">Login As Admin</NavLink></MenuItem>

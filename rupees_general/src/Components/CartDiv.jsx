@@ -1,4 +1,5 @@
-import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Image,    Text } from '@chakra-ui/react';
+import {Link} from "react-router-dom"
 import React from 'react';
 
 const CartDiv = () => {
@@ -10,12 +11,17 @@ const CartDiv = () => {
           <Text>214 Gallatin Pike N Street 402 </Text>
         </Box>
           <Flex alignItems={"center"} marginRight="10px">
-            <Image src='https://thumbs.dreamstime.com/b/trolley-thin-line-add-to-shopping-cart-icon-vector-illustration-graphic-web-design-template-black-color-editable-symbol-171152878.jpg'
+               
+              <Link to='/cartpage'>
+              <Image src='https://thumbs.dreamstime.com/b/trolley-thin-line-add-to-shopping-cart-icon-vector-illustration-graphic-web-design-template-black-color-editable-symbol-171152878.jpg'
              width="40px"
              alt='cartimg'
              
             />
-            <Heading bg={"grey"} borderRadius="50%">1</Heading>
+
+            
+              </Link>
+          
           </Flex>
       </Flex>
     </div>

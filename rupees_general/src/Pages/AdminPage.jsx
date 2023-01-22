@@ -8,6 +8,7 @@ import {
 import { deletedata, getdata, postdata } from '../Api'
 
 import Updatedata from '../Components/Updatedata'
+import Loadingdata from '../Components/Loadingdata'
 
 
 
@@ -79,11 +80,14 @@ const [getproduct , setgetproduct] = useState([])
 const [state, dispatch] = useReducer(reducer, initstate);
   const [updatedatas  , setupdatedata] = useState(false)
   const [iddata , setiddata] = useState(0)
+  const [isLoading , setisloading] = useState(false)
   //  -----------------------------------fetch data-------------------------------------------------------//
          const fetchdata = ()=>{
+         setisloading(true)
             getdata().then((res)=>{
              
               setgetproduct(res.data)
+              setisloading(false)
             })
          }
  //  -----------------------------------fetch data-------------------------------------------------------//       
@@ -186,10 +190,14 @@ const [state, dispatch] = useReducer(reducer, initstate);
            <hr/>
            <br/>
                 <Text fontSize='4xl'>Display Data</Text>
-                <Button onClick={fetchdata}>Get Data</Button>
+                <Button onClick={()=>{
+                  fetchdata()
+                   
+                }}>Get Data</Button>
               
               <div style={{display:"grid" , gridTemplateColumns:"repeat(3,1fr)" ,justifyContent:"center"}}>
               {
+                 
                   getproduct.map((item)=>{
                     return<Card key={item.id} style={{ margin:"5px"}} padding={10}>
                       <CardBody padding={50} style={{  margin:"5px"}} boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}>

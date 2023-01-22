@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Image, Text } from '@chakra-ui/react';
+import { Box, Flex, Image, Link, Text } from '@chakra-ui/react';
 
 
 const ToysList = () => {
@@ -10,10 +10,12 @@ const ToysList = () => {
          <Image width={120} height="120px" src='https://www.dollargeneral.com/c/toys/_jcr_content/root/responsivegrid/smartcarousel_catego/image_0.coreimg.100.300.png/1672331341015/toys-core-baby-presxhool.png'/>
          <Text fontWeight={"bold"}>Baby Toys</Text>
       </Box>
+      <Link href='toyproduct' >
       <Box  padding={5} boxShadow={"rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;"}>
          <Image width={120} height="120px" src='https://www.dollargeneral.com/c/toys/_jcr_content/root/responsivegrid/smartcarousel_catego/image_1.coreimg.100.300.png/1672332414060/toys-core-action-figures.png'/>
          <Text fontWeight={"bold"}>Action Figure</Text>
       </Box>
+      </Link>
       <Box  padding={5} boxShadow={"rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;"}>
          <Image width={120} height="120px" src='https://www.dollargeneral.com/c/toys/_jcr_content/root/responsivegrid/smartcarousel_catego/image_2.coreimg.100.300.png/1672332473690/toys-core-dolls.png'/>
          <Text fontWeight={"bold"}>Dolls</Text>

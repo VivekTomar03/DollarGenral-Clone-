@@ -20,9 +20,11 @@ import ProductList from '../Components/ProductList'
 import ToysList from '../Components/ToysList'
 import Extradata from '../Components/Extradata'
 
+
 const ProductPage = () => {
   return (
     <div>
+      
        <div>
         <CartDiv/>
        </div >

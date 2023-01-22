@@ -1,12 +1,17 @@
 
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Flex, Grid, GridItem, Heading, Image, Link, Text } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { getdatavitamins } from '../Api';
 import CartDiv from '../Components/CartDiv';
 import SimpleSlider from '../Components/Crousel';
 import Filter from '../Components/Filter';
 import { useSearchParams } from "react-router-dom";
+import Footer from '../Components/Footer';
+import DarkMode from '../Components/DarkMode';
+import CartPage from './CartPage';
+import { AuthConetxt } from '../Context/AuthContext';
+import Loadingdata from '../Components/Loadingdata';
 
 
 const changetonumber = (val)=>{
@@ -24,7 +29,12 @@ const ProductVitamins = () => {
   const [ page , setpage] = useState(initstate)
   const [orderby , setorderby] = useState("")
   const [totalpage , setTotalpage] = useState()
+  const [cartItems , setCartItems] = useState([])
+  const{setdata , data} = useContext(AuthConetxt)
+  const[isLoading , setisloading] = useState(false)
+   setdata(cartItems)
   
+
   const [category , setcategory] = useState("")
   const sort = "price"
   
@@ -79,18 +89,41 @@ const ProductVitamins = () => {
   
      const fetchdata = async(page)=>{
       try {
-       
+       setisloading(true)
        const res = await getdata(page)  
-       console.log(res)
+       
       const{TotalPage , data} = res
        setTotalpage(TotalPage)
        setproduct(data) 
+       setisloading(false)
       } catch (error) {
           console.log(error)
       }
      } 
-  
-  return (
+
+       const handlecart=(item)=>{
+        let itemExists = false;
+        const updatedCartItems = cartItems.map(cartItem => {
+            if (cartItem.id === item.id) {
+                itemExists = true;
+                return { ...cartItem, count: cartItem.count + 1 };
+            }
+            return cartItem;
+        });
+    
+        if (!itemExists) {
+            setCartItems([...updatedCartItems, { ...item, count: 1 }]);
+        } else {
+            setCartItems(updatedCartItems);
+        }
+        // console.log(item, "from handle cart")
+        // setdata([...data , item])
+        // console.log(data)
+       }
+    
+          console.log(isLoading)
+ let countpage = Math.ceil(totalpage/12)
+  return isLoading ? <Loadingdata/> : (
     <div>
      <div className='cartdiv'>
       <CartDiv/>
@@ -121,6 +154,7 @@ const ProductVitamins = () => {
         </div>
         <div className='health' >
           <Heading textAlign={"left"} marginLeft="95px">Health</Heading>
+
          
         </div>
            <Flex className='filter' justify={"end"} marginRight="70px">
@@ -129,16 +163,16 @@ const ProductVitamins = () => {
 
         <div className='ProductItems'>
 
-             <Grid  gridTemplateColumns="repeat(4,1fr)" margin={"auto"} marginTop="40px" gap={10} width="90%">
+             <Grid  gridTemplateColumns={{ base: 'repeat(1,1fr)', sm: 'repeat(2,1fr)', md: 'repeat(3,1fr)' ,xl:"repeat(4,1fr)" , "2xl":"repeat(4,1fr)"}} margin={"auto"} marginTop="40px" gap={10} width="90%">
               {
                 product.map((item)=>(
                  
-                    <GridItem boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"} padding="10px">
+                    <GridItem boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"} padding="10px" key={item.id}>
                      <Link href={`product_info/${item.id}`}> <Image marginLeft="30px" src={item.image} width="200px" height={150}/></Link>
                       <Text>{item.name.substring(0, 30)}</Text>
                       <Text>⭐⭐⭐⭐{item.rating}</Text> 
                       <Text>Rs : {item.price}</Text>
-                      <Button bg={"yellow"}>Add Cart</Button>
+                      <Button onClick={()=> handlecart(item)} bg={"yellow"}>Add Cart</Button>
                     </GridItem>
                   
                 ))
@@ -149,8 +183,12 @@ const ProductVitamins = () => {
         <div className='pagination' style={{marginTop:"20px"}}>
           <Button isDisabled={page===1} marginRight="5px" onClick={()=> setpage(page-1)}>🡸 Previous</Button>
           <Button isDisabled marginRight="5px">{page}</Button>
-          <Button disabled={page===product.length}  onClick={()=> setpage(page+1)}>Next 🢂</Button>
+          <Button isDisabled={page===countpage}  onClick={()=> setpage(page+1)}>Next 🢂</Button>
         </div>
+        <div className='footer'>
+            <Footer/>
+          </div>
+          
     </div>
   );
 }

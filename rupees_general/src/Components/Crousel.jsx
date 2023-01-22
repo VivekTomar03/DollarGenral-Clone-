@@ -12,7 +12,8 @@ export default class SimpleSlider extends Component {
       slidesToScroll: 1,
       autoplaySpeed: 3000,
       autoplay: true,
-      centerMode:true,
+ 
+     
       
     };
     return (
@@ -21,7 +22,7 @@ export default class SimpleSlider extends Component {
         <Slider {...settings}>
           <div>
             
-                <img alt="1img" src="https://www.dollargeneral.com/_jcr_content/root/responsivegrid/responsivegrid/dgcarousel_copy_copy/item_1667574383955.coreimg.100.1200.jpeg/1673499572004/wk51-home-1140x300-hero-desktop-appsuite.jpeg"/>
+                <img  alt="1img" src="https://www.dollargeneral.com/_jcr_content/root/responsivegrid/responsivegrid/dgcarousel_copy_copy/item_1667574383955.coreimg.100.1200.jpeg/1673499572004/wk51-home-1140x300-hero-desktop-appsuite.jpeg"/>
            
           </div>
           <div>
