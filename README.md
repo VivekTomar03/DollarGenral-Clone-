@@ -44,8 +44,8 @@ For storing user data i used Api with ASxios method
 
 ## How to run the Project
 
-* open the vercel link the attached abouve and use the app 
-* i am using render service for the backend part so the added data will be removed after some because of render rules 
+* Open the vercel link the attached abouve and use the app 
+* I am using render service for the backend part so the added data will be removed after some because of render rules 
 
 ## End Notes :bookmark_tabs:
 In this project we were tried to achieve a near to perfect clone of the original website as much as possible. This entire journey of this construct week has given us experiences and we have learned lots of things by applying to the real website and it gave us a lot of confidence. Most of the features are added and functionality of the website is achieved.
