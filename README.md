@@ -21,6 +21,7 @@ In this project  I have tried to manipulate dom elements, styling using css and 
 * CSS
 * JavaScript
 * For APi i used Render To delpoy my backend server
+* Chakra UI
 
 For storing user data i used Api with ASxios method
 
